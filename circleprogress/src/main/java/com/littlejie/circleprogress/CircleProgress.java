@@ -33,6 +33,7 @@ public class CircleProgress extends View {
     private int mDefaultSize;
     //是否开启抗锯齿
     private boolean antiAlias;
+
     //绘制提示
     private TextPaint mHintPaint;
     private CharSequence mHint;
@@ -62,6 +63,8 @@ public class CircleProgress extends View {
     private float mArcWidth;
     private float mStartAngle, mSweepAngle;
     private RectF mRectF;
+    //是否开启渐变
+    private boolean mIsSweepGradient;
     //渐变的颜色是360度，如果只显示270，那么则会缺失部分颜色
     private SweepGradient mSweepGradient;
     private int[] mGradientColors = {Color.GREEN, Color.YELLOW, Color.RED};
@@ -229,7 +232,10 @@ public class CircleProgress extends View {
         mValueOffset = mCenterPoint.y + getBaselineOffsetFromY(mValuePaint);
         mHintOffset = mCenterPoint.y - mRadius * mTextOffsetPercentInRadius + getBaselineOffsetFromY(mHintPaint);
         mUnitOffset = mCenterPoint.y + mRadius * mTextOffsetPercentInRadius + getBaselineOffsetFromY(mUnitPaint);
-        updateArcPaint();
+        if (getmIsSweepGradient()) {
+            updateArcPaint();
+        }
+
         Log.d(TAG, "onSizeChanged: 控件大小 = " + "(" + w + ", " + h + ")"
                 + "圆心坐标 = " + mCenterPoint.toString()
                 + ";圆半径 = " + mRadius
@@ -317,6 +323,14 @@ public class CircleProgress extends View {
         return mValue;
     }
 
+    public void setmIsSweepGradient(boolean isSweepGradient) {
+        mIsSweepGradient = isSweepGradient;
+    }
+
+    private boolean getmIsSweepGradient() {
+        return mIsSweepGradient;
+    }
+
     /**
      * 设置当前值
      *
@@ -393,7 +407,10 @@ public class CircleProgress extends View {
      */
     public void setGradientColors(int[] gradientColors) {
         mGradientColors = gradientColors;
-        updateArcPaint();
+        if (getmIsSweepGradient()) {
+            updateArcPaint();
+        }
+
     }
 
     public long getAnimTime() {
