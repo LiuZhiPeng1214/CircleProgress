@@ -20,7 +20,7 @@ Add it in your root build.gradle at the end of repositories:
  Add the dependency:
 ```
 		dependencies {
-    	    compile 'com.github.LiuZhiPeng1214:CircleProgress:-SNAPSHOT'
+    	   compile 'com.github.LiuZhiPeng1214:CircleProgress:0.0.1-beta'
     	}
 ```
 
