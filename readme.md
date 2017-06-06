@@ -1,3 +1,4 @@
+[![](https://jitpack.io/v/LiuZhiPeng1214/CircleProgress.svg)](https://jitpack.io/#LiuZhiPeng1214/CircleProgress)
 # 圆形进度条
 Android 自定义圆形进度条，包括传统传统的圆形(CircleProgress)、刻度(DialProgress)、水波纹(WaveProgress)效果的三种圆形进度条。
 
@@ -19,7 +20,7 @@ Add it in your root build.gradle at the end of repositories:
 ```
  Add the dependency:
 ```
-		dependencies {
+	dependencies {
     	   compile 'com.github.LiuZhiPeng1214:CircleProgress:0.0.1-beta'
     	}
 ```
