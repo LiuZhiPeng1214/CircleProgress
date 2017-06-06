@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--设置单位的显示模式，1为右边，2位下边-->
+    <attr name="showUnitPosition">
+        <enum name="right" value="1"/>
+        <enum name="below" value="2"/>
+    </attr>
     <!-- 是否开启抗锯齿 -->
     <attr name="antiAlias" format="boolean" />
     <!-- 圆弧起始角度，3点钟方向为0，顺时针递增，小于0或大于360进行取余 -->
@@ -38,6 +43,7 @@
 
     <!-- 圆形进度条 -->
     <declare-styleable name="CircleProgressBar">
+        <attr name="showUnitPosition"/>
         <attr name="antiAlias" />
         <attr name="startAngle" />
         <attr name="sweepAngle" />

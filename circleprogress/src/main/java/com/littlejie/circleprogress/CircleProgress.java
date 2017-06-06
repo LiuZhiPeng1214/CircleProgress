@@ -27,6 +27,10 @@ import com.littlejie.circleprogress.utils.MiscUtil;
 public class CircleProgress extends View {
 
     private static final String TAG = CircleProgress.class.getSimpleName();
+    private static final int SHOW_UNIT_RIGHT = 1;
+    private static final int SHOW_UNIT_BELOW = 2;
+
+    private int mShowUnitPosition;
     private Context mContext;
 
     //默认大小
@@ -105,6 +109,7 @@ public class CircleProgress extends View {
         TypedArray typedArray = mContext.obtainStyledAttributes(attrs, R.styleable.CircleProgressBar);
 
         antiAlias = typedArray.getBoolean(R.styleable.CircleProgressBar_antiAlias, Constant.ANTI_ALIAS);
+        mShowUnitPosition = typedArray.getInt(R.styleable.CircleProgressBar_showUnitPosition,Constant.DEFAULT_SHOW_UNIT_POSITION);
 
         mHint = typedArray.getString(R.styleable.CircleProgressBar_hint);
         mHintColor = typedArray.getColor(R.styleable.CircleProgressBar_hintColor, Color.BLACK);
@@ -262,15 +267,28 @@ public class CircleProgress extends View {
         // 计算文字宽度，由于Paint已设置为居中绘制，故此处不需要重新计算
         // float textWidth = mValuePaint.measureText(mValue.toString());
         // float x = mCenterPoint.x - textWidth / 2;
-        canvas.drawText(String.format(mPrecisionFormat, mValue), mCenterPoint.x, mValueOffset, mValuePaint);
+        if (mUnit != null) {
+            switch (mShowUnitPosition) {
+                case SHOW_UNIT_BELOW:
+                    canvas.drawText(String.format(mPrecisionFormat, mValue), mCenterPoint.x, mValueOffset, mValuePaint);
+                    canvas.drawText(mUnit.toString(), mCenterPoint.x, mUnitOffset, mUnitPaint);
+                    break;
+                case SHOW_UNIT_RIGHT:
+                    canvas.drawText(String.format(mPrecisionFormat,mValue)+mUnit.toString(),mCenterPoint.x,mValueOffset,mValuePaint);
+                    break;
+            }
+        }
+
+
+       // canvas.drawText(String.format(mPrecisionFormat, mValue), mCenterPoint.x, mValueOffset, mValuePaint);
 
         if (mHint != null) {
             canvas.drawText(mHint.toString(), mCenterPoint.x, mHintOffset, mHintPaint);
         }
 
-        if (mUnit != null) {
+      /*  if (mUnit != null) {
             canvas.drawText(mUnit.toString(), mCenterPoint.x, mUnitOffset, mUnitPaint);
-        }
+        }*/
     }
 
     private void drawArc(Canvas canvas) {
@@ -329,6 +347,14 @@ public class CircleProgress extends View {
 
     private boolean getmIsSweepGradient() {
         return mIsSweepGradient;
+    }
+
+    public void setUnitPosition(int position) {
+        mShowUnitPosition = position;
+    }
+
+    private int getUnitPosition() {
+        return mShowUnitPosition;
     }
 
     /**

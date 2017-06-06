@@ -51,6 +51,7 @@
             app:maxValue="100"
             app:startAngle="135"
             app:sweepAngle="270"
+            app:showUnitPosition="below"
             app:textOffsetPercentInRadius="0.5"
             app:unit="%"
             app:unitSize="@dimen/text_size_15"
