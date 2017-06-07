@@ -26,4 +26,6 @@ Add it in your root build.gradle at the end of repositories:
 ```
 
 ## XML 配置
-关于 XML 的配置请见 circleprogress module 下的 [attrs.xml](circleprogress/src/main/res/values/attrs.xml) 文件
+关于 XML 的配置请见 circleprogress module 下的 [attrs.xml](circleprogress/src/main/res/values/attrs.xml) 文件<br>
+|  key       |  value      |  description       |
+|------------|-------------|--------------------|
