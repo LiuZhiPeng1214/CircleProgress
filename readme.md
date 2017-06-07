@@ -27,14 +27,19 @@ Add it in your root build.gradle at the end of repositories:
 
 ## XML 配置
 关于 XML 的配置请见 circleprogress module 下的 [attrs.xml](circleprogress/src/main/res/values/attrs.xml) 文件<br>
-|语法|效果|
-|----|-----|
-|`*斜体1*`|*斜体1*|
-|`_斜体2_`| _斜体2_|
-|`**粗体1**`|**粗体1**|
-|`__粗体2__`|__粗体2__|
-|`这是一个 ~~删除线~~`|这是一个 ~~删除线~~|
-|`***斜粗体1***`|***斜粗体1***|
-|`___斜粗体2___`|___斜粗体2___|
-|`***~~斜粗体删除线1~~***`|***~~斜粗体删除线1~~***|
-|`~~***斜粗体删除线2***~~`|~~***斜粗体删除线2***~~|
+<table>
+<thead>
+<tr class="header">
+<th>你好</th>
+<th>Markdown</th>
+<th>表格</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>我</td>
+<td>不是</td>
+<td>人</td>
+</tr>
+</tbody>
+</table>
