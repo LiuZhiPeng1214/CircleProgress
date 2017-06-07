@@ -65,6 +65,7 @@
             android:layout_gravity="center_horizontal"
             app:antiAlias="true"
             app:arcWidth="@dimen/small"
+            app:arcColors="#f00"
             app:bgArcColor="@android:color/darker_gray"
             app:bgArcWidth="@dimen/small"
             app:hint="当前进度"

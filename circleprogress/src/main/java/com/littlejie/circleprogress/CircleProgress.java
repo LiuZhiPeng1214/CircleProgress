@@ -65,6 +65,7 @@ public class CircleProgress extends View {
     //绘制圆弧
     private Paint mArcPaint;
     private float mArcWidth;
+    private int mArcColors;
     private float mStartAngle, mSweepAngle;
     private RectF mRectF;
     //是否开启渐变
@@ -128,6 +129,7 @@ public class CircleProgress extends View {
         mUnitSize = typedArray.getDimension(R.styleable.CircleProgressBar_unitSize, Constant.DEFAULT_UNIT_SIZE);
 
         mArcWidth = typedArray.getDimension(R.styleable.CircleProgressBar_arcWidth, Constant.DEFAULT_ARC_WIDTH);
+        mArcColors = typedArray.getColor(R.styleable.CircleProgressBar_arcColors,mGradientColors[0]);
         mStartAngle = typedArray.getFloat(R.styleable.CircleProgressBar_startAngle, Constant.DEFAULT_START_ANGLE);
         mSweepAngle = typedArray.getFloat(R.styleable.CircleProgressBar_sweepAngle, Constant.DEFAULT_SWEEP_ANGLE);
 
@@ -312,9 +314,15 @@ public class CircleProgress extends View {
      */
     private void updateArcPaint() {
         // 设置渐变
-        int[] mGradientColors = {Color.GREEN, Color.YELLOW, Color.RED};
-        mSweepGradient = new SweepGradient(mCenterPoint.x, mCenterPoint.y, mGradientColors, null);
-        mArcPaint.setShader(mSweepGradient);
+        //int[] mGradientColors = {Color.GREEN, Color.YELLOW, Color.RED};
+        if (mGradientColors.length>2) {
+            mSweepGradient = new SweepGradient(mCenterPoint.x, mCenterPoint.y, mGradientColors, null);
+            mArcPaint.setShader(mSweepGradient);
+        }else {
+            mArcColors=  mGradientColors[0];
+           mArcPaint.setColor(mArcColors);
+        }
+
     }
 
     public boolean isAntiAlias() {

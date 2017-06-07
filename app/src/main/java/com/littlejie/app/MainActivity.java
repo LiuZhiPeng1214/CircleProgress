@@ -14,7 +14,7 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private final static int[] COLORS = new int[]{Color.RED, Color.YELLOW, Color.GREEN, Color.BLUE};
+    private final static int[] COLORS = new int[]{Color.GREEN};
 
     private Button mBtnResetAll;
     private CircleProgress mCircleProgress1, mCircleProgress2, mCircleProgress3;
@@ -57,10 +57,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 mCircleProgress1.setValue(mRandom.nextInt((int) mCircleProgress1.getMaxValue()));
                 break;
             case R.id.circle_progress_bar2:
+
                 mCircleProgress2.setValue(mRandom.nextFloat() * mCircleProgress2.getMaxValue());
                 break;
             case R.id.circle_progress_bar3:
                 //在代码中动态改变渐变色，可能会导致颜色跳跃
+                mCircleProgress3.setmIsSweepGradient(true);
                 mCircleProgress3.setGradientColors(COLORS);
                 mCircleProgress3.setValue(mRandom.nextFloat() * mCircleProgress3.getMaxValue());
                 break;
