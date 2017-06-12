@@ -57,7 +57,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 mCircleProgress1.setValue(mRandom.nextInt((int) mCircleProgress1.getMaxValue()));
                 break;
             case R.id.circle_progress_bar2:
-
+                mCircleProgress2.setmIsSweepGradient(true);
+                mCircleProgress2.setGradientColors(COLORS);
                 mCircleProgress2.setValue(mRandom.nextFloat() * mCircleProgress2.getMaxValue());
                 break;
             case R.id.circle_progress_bar3:

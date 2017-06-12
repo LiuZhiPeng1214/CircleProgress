@@ -104,6 +104,7 @@ public class CircleProgress extends View {
         initAttrs(attrs);
         initPaint();
         setValue(mValue);
+        updateArcPaint();
     }
 
     private void initAttrs(AttributeSet attrs) {
