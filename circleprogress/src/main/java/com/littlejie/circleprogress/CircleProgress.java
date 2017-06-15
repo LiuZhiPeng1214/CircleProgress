@@ -72,7 +72,7 @@ public class CircleProgress extends View {
     private boolean mIsSweepGradient;
     //渐变的颜色是360度，如果只显示270，那么则会缺失部分颜色
     private SweepGradient mSweepGradient;
-    private int[] mGradientColors = {Color.GREEN, Color.YELLOW, Color.RED};
+    private int[] mGradientColors = {Color.WHITE, Color.WHITE, Color.WHITE};
     //当前进度，[0.0f,1.0f]
     private float mPercent;
     //动画时间
