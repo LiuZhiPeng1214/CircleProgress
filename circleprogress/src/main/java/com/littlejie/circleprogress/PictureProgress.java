@@ -79,12 +79,22 @@ public class PictureProgress extends View {
     private final int ANIM_FRAME = 4;          //帧动画
     private int animMode = ANIM_NULL;
 
+
     private int rotateRate = 10;
     private int rotateDegree = 0;
     private float scaleMax = 1.5f, scaleMin = 0.5f;
     private float scaleLevel = 1;
     private float scaleRate = 0.1f;
     boolean isScaleIncrease = true;
+
+    //字体位置
+    private static final int center = 0;
+    private static final int top = 1;
+    private static final int bottom = 2;
+
+    //是否显示字体
+    private boolean isFont = false;
+    private int mFontPosition = center;
 
     //帧动画图片
     private int drawableIds[];
@@ -128,6 +138,8 @@ public class PictureProgress extends View {
         isGradient = typedArray.getBoolean(R.styleable.PictureProgressBar_isGradient, false);
         backgroundDrawableId = typedArray.getResourceId(R.styleable.PictureProgressBar_backgroundDrawable,0);
         barDrawableId = typedArray.getResourceId(R.styleable.PictureProgressBar_barDrawable,0);
+        isFont = typedArray.getBoolean(R.styleable.PictureProgressBar_isFont,false);
+        mFontPosition = typedArray.getInt(R.styleable.PictureProgressBar_isFontPosition,0);
         typedArray.recycle();
         init();
 

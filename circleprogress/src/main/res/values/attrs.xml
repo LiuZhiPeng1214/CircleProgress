@@ -181,5 +181,11 @@
         <attr name="gradientEndColor" format="color"/>
         <attr name="backgroundDrawable" format="reference"/>
         <attr name="barDrawable" format="reference"/>
+        <attr name="isFont" format="boolean"/>
+        <attr name="isFontPosition" format="enum">
+            <enum name="center" value="0"/>
+            <enum name="top" value="1"/>
+            <enum name="bottom" value="2"/>
+        </attr>
     </declare-styleable>
 </resources>
