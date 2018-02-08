@@ -188,4 +188,7 @@
             <enum name="bottom" value="2"/>
         </attr>
     </declare-styleable>
+    <declare-styleable name="HorizontalProgressBar">
+
+    </declare-styleable>
 </resources>

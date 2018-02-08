@@ -10,6 +10,7 @@ import android.widget.Button;
 
 import com.littlejie.circleprogress.CircleProgress;
 import com.littlejie.circleprogress.DialProgress;
+import com.littlejie.circleprogress.HorizontalProgressBar;
 import com.littlejie.circleprogress.PictureProgress;
 import com.littlejie.circleprogress.WaveProgress;
 
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public PictureProgress pb_5;
     public Button mStart;
     public ValueAnimator mValueAnimator;
+    public HorizontalProgressBar mHorizontalProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         pb_4 = (PictureProgress) findViewById(R.id.pb_4);
         pb_5 = (PictureProgress) findViewById(R.id.pb_5);
         mStart = (Button) findViewById(R.id.btn_start);
+        mHorizontalProgressBar = (HorizontalProgressBar) findViewById(R.id.horizontalprogressbar);
 
         mBtnResetAll.setOnClickListener(this);
         mCircleProgress1.setOnClickListener(this);
@@ -61,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         pb_1.setDrawableIds(new int[] {R.mipmap.i00,R.mipmap.i01,R.mipmap.i02,R.mipmap.i03,R.mipmap.i04,R.mipmap.i05});
-        mValueAnimator = ValueAnimator.ofInt(0, 1000);
+        mValueAnimator = ValueAnimator.ofInt(0, 100);
         mValueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
@@ -88,6 +91,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (pb_5.getProgress() >= pb_5.getMax()) {
                     pb_5.setAnimRun(false);
                 }
+
+                mHorizontalProgressBar.setCurrentProgress(Integer.parseInt(animation.getAnimatedValue().toString()));
             }
         });
         mValueAnimator.setDuration(10000);
