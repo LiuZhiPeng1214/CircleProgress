@@ -2,6 +2,7 @@ package com.littlejie.circleprogress;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -100,7 +101,10 @@ public class HorizontalProgressBar extends View {
      * 百分比文字字体大小
      */
     private int textPaintSize;
-
+    /**
+     * 百分比字体颜色
+     */
+    private int textPaintColor;
     /**
      * 进度条背景颜色
      */
@@ -109,6 +113,7 @@ public class HorizontalProgressBar extends View {
      * 进度条颜色
      */
     private int progressColor = 0xFFf66b12;
+    private int tipColor = 0xFFf66b12;
 
     /**
      * 绘制提示框的矩形
@@ -131,24 +136,38 @@ public class HorizontalProgressBar extends View {
 
     public HorizontalProgressBar(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        init();
+        init(context,attrs);
         initPaint();
     }
 
     /**
      * 初始化画笔宽度及view大小
      */
-    private void init() {
-        progressPaintWidth = dp2px(10);
-        tipHeight = dp2px(15);
-        tipWidth = dp2px(30);
-        tipPaintWidth = dp2px(1);
-        triangleHeight = dp2px(3);
-        roundRectRadius = dp2px(2);
-        textPaintSize = sp2px(10);
-        progressMarginTop = dp2px(8);
+    private void init(Context context, @Nullable AttributeSet attrs) {
+//        progressPaintWidth = dp2px(10);
+//        tipHeight = dp2px(15);
+//        tipWidth = dp2px(30);
+//        tipPaintWidth = dp2px(1);
+//        triangleHeight = dp2px(3);
+//        roundRectRadius = dp2px(2);
+//        textPaintSize = sp2px(10);
+//        progressMarginTop = dp2px(8);
 
         //view真实的高度
+        TypedArray ta = context.getTheme().obtainStyledAttributes(attrs,R.styleable.HorizontalProgressBar,0,0);
+        bgColor = ta.getColor(R.styleable.HorizontalProgressBar_bgcolor,Color.GRAY);
+        progressColor = ta.getColor(R.styleable.HorizontalProgressBar_progresscolor,Color.RED);
+        tipColor = ta.getColor(R.styleable.HorizontalProgressBar_tipColor,Color.RED);
+        textPaintColor = ta.getColor(R.styleable.HorizontalProgressBar_textPaintColor,Color.WHITE);
+        progressPaintWidth =  ta.getDimensionPixelSize(R.styleable.HorizontalProgressBar_progressPaintWidth,20);
+        tipHeight = ta.getDimensionPixelSize(R.styleable.HorizontalProgressBar_tipHeight,30);
+        tipWidth = ta.getDimensionPixelSize(R.styleable.HorizontalProgressBar_tipWidth, 60);
+        tipPaintWidth = ta.getDimensionPixelSize(R.styleable.HorizontalProgressBar_tipPaintWidth,2);
+        triangleHeight =ta.getDimensionPixelSize(R.styleable.HorizontalProgressBar_triangleHeight,6);
+        roundRectRadius = ta.getDimensionPixelSize(R.styleable.HorizontalProgressBar_roundRectRadius,4);
+        textPaintSize = (int) ta.getDimension(R.styleable.HorizontalProgressBar_textPaintSize,20);
+        progressMarginTop = ta.getDimensionPixelSize(R.styleable.HorizontalProgressBar_progressMarginTop,16);
+        ta.recycle();
         mViewHeight = tipHeight + tipPaintWidth + triangleHeight + progressPaintWidth + progressMarginTop;
     }
 
@@ -158,7 +177,7 @@ public class HorizontalProgressBar extends View {
     private void initPaint() {
         bgPaint = getPaint(progressPaintWidth, bgColor, Paint.Style.STROKE);
         progressPaint = getPaint(progressPaintWidth, progressColor, Paint.Style.STROKE);
-        tipPaint = getPaint(tipPaintWidth, progressColor, Paint.Style.FILL);
+        tipPaint = getPaint(tipPaintWidth, tipColor, Paint.Style.FILL);
 
         initTextPaint();
     }
@@ -169,7 +188,7 @@ public class HorizontalProgressBar extends View {
     private void initTextPaint() {
         textPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         textPaint.setTextSize(textPaintSize);
-        textPaint.setColor(Color.WHITE);
+        textPaint.setColor(textPaintColor);
         textPaint.setTextAlign(Paint.Align.CENTER);
         textPaint.setAntiAlias(true);
     }
@@ -360,10 +379,107 @@ public class HorizontalProgressBar extends View {
         return this;
     }
 
+    public int getProgressPaintWidth() {
+        return progressPaintWidth;
+    }
+
+    public void setProgressPaintWidth(int progressPaintWidth) {
+        this.progressPaintWidth = progressPaintWidth;
+    }
+
+    public int getTipPaintWidth() {
+        return tipPaintWidth;
+    }
+
+    public void setTipPaintWidth(int tipPaintWidth) {
+        this.tipPaintWidth = tipPaintWidth;
+    }
+
+    public int getTipHeight() {
+        return tipHeight;
+    }
+
+    public void setTipHeight(int tipHeight) {
+        this.tipHeight = tipHeight;
+    }
+
+    public int getTipWidth() {
+        return tipWidth;
+    }
+
+    public void setTipWidth(int tipWidth) {
+        this.tipWidth = tipWidth;
+    }
+
+    public int getTriangleHeight() {
+        return triangleHeight;
+    }
+
+    public void setTriangleHeight(int triangleHeight) {
+        this.triangleHeight = triangleHeight;
+    }
+
+    public int getProgressMarginTop() {
+        return progressMarginTop;
+    }
+
+    public void setProgressMarginTop(int progressMarginTop) {
+        this.progressMarginTop = progressMarginTop;
+    }
+
+    public String getTextString() {
+        return textString;
+    }
+
+    public void setTextString(String textString) {
+        this.textString = textString;
+    }
+
+    public int getTextPaintSize() {
+        return textPaintSize;
+    }
+
+    public void setTextPaintSize(int textPaintSize) {
+        this.textPaintSize = textPaintSize;
+    }
+
+    public int getTextPaintColor() {
+        return textPaintColor;
+    }
+
+    public void setTextPaintColor(int textPaintColor) {
+        this.textPaintColor = textPaintColor;
+    }
+
+    public int getBgColor() {
+        return bgColor;
+    }
+
+    public void setBgColor(int bgColor) {
+        this.bgColor = bgColor;
+    }
+
+    public int getProgressColor() {
+        return progressColor;
+    }
+
+    public void setProgressColor(int progressColor) {
+        this.progressColor = progressColor;
+    }
+
+    public int getTipColor() {
+        return tipColor;
+    }
+
+    public void setTipColor(int tipColor) {
+        this.tipColor = tipColor;
+    }
+
     /**
      * 实时显示进度
      *
      * @param progress
+
      * @return
      */
     public HorizontalProgressBar setCurrentProgress(float progress) {

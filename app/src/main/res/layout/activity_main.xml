@@ -238,7 +238,17 @@
         <com.littlejie.circleprogress.HorizontalProgressBar
             android:id="@+id/horizontalprogressbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"/>
+            android:layout_height="100dp"
+            android:layout_margin="5dp"
+            app:progressPaintWidth="10dp"
+            app:tipHeight="15dp"
+            app:tipWidth="30dp"
+            app:tipPaintWidth="1dp"
+            app:triangleHeight="3dp"
+            app:roundRectRadius="2dp"
+            app:textPaintSize="10sp"
+            app:progressMarginTop="10dp"
+            app:tipColor="#000"/>
+            />
     </LinearLayout>
 </ScrollView>

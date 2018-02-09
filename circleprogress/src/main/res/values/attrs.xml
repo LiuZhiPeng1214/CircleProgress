@@ -189,6 +189,29 @@
         </attr>
     </declare-styleable>
     <declare-styleable name="HorizontalProgressBar">
+        <!--背景颜色-->
+        <attr name="bgcolor" format="color"/>
+        <!--进度条颜色-->
+        <attr name="progresscolor" format="color"/>
+        <!-- 进度条画笔宽度-->
+        <attr name="progressPaintWidth" format="dimension"/>
+        <!--百分比提示框的高度-->
+        <attr name="tipHeight" format="dimension"/>
+        <!--百分比提示框宽度-->
+        <attr name="tipWidth" format="dimension"/>
+        <!--百分比提示框画笔的宽度-->
+        <attr name="tipPaintWidth" format="dimension"/>
+        <!--三角形的高-->
+        <attr name="triangleHeight" format="dimension"/>
+        <!--圆角矩形的圆角半径-->
+        <attr name="roundRectRadius" format="dimension"/>
+        <!--百分比文字字体大小-->
+        <attr name="textPaintSize" format="dimension"/>
+        <!--进度条距离提示框的高度-->
+        <attr name="progressMarginTop" format="dimension"/>
+        <!--提示框颜色-->
+        <attr name="tipColor" format="color"/>
+        <attr name="textPaintColor" format="color"/>
 
     </declare-styleable>
 </resources>
